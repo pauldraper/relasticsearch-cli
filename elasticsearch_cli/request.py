@@ -16,7 +16,7 @@ def request_main(args):
 
         es_client = boto3.client("es")
         args.aws_auth = True
-        response = es_client.describe_elasticsearch_domain(DomainName=args.domain)
+        response = es_client.describe_elasticsearch_domain(DomainName=args.aws_domain)
         endpoint = f"https://{response['DomainStatus']['Endpoint']}"
     else:
         print("Missing endpoint", file=sys.stderr)
@@ -49,9 +49,6 @@ def request_main(args):
     headers = {}
     if args.body is not None:
         headers["Content-Type"] = "application/json"
-        body = args.body
-    else:
-        body = None
 
     adapter = requests.adapters.HTTPAdapter()
     session = requests.Session()
@@ -62,7 +59,7 @@ def request_main(args):
             args.method,
             f"{endpoint}{args.path}",
             auth=auth,
-            data=body,
+            data=args.body,
             headers=headers,
         )
         response.raise_for_status()
@@ -74,7 +71,4 @@ def request_main(args):
         print(str(e), file=sys.stderr)
         sys.exit(1)
 
-    if response.headers["Content-Type"].startswith("application/json"):
-        print(json.dump(response.json(), sys.stdout, indent=4, sort_keys=True))
-    else:
-        print(response.text)
+    print(response.text)
