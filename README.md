@@ -1,4 +1,4 @@
-# Elasticsearch CLI
+# RElasticsearch CLI
 
 Elasticsearch CLI client
 
@@ -6,7 +6,7 @@ Elasticsearch CLI client
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Overview](#overview)
-- [](#)
+- [Install](#install)
 - [Usage](#usage)
 - [Example](#example)
 
@@ -19,13 +19,13 @@ This is a thin CLI wrapper around the ES API. Supports AWS IAM authentication.
 ## Install
 
 ```sh
-pip3 install elasticsearch-cli
+pip3 install relasticsearch-cli
 ```
 
 To install with AWS IAM support,
 
 ```sh
-pip3 install elasticsearch-cli[aws]
+pip3 install relasticsearch-cli[aws]
 ```
 
 ## Usage

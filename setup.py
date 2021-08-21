@@ -4,7 +4,7 @@ import os
 import setuptools
 
 version = {}
-with open("elasticsearch_cli/version.py", "r") as f:
+with open("relasticsearch_cli/version.py", "r") as f:
     exec(f.read(), version)
 
 with open("README.md", "r") as f:
@@ -23,18 +23,18 @@ setuptools.setup(
     description="Elasticsearch CLI client",
     entry_points={
         "console_scripts": [
-            "es=elasticsearch_cli.cli:main",
+            "es=relasticsearch_cli.cli:main",
         ]
     },
     extras_require={"aws": ["boto3", "requests-aws4auth"], "dev": ["black", "isort"]},
     install_requires=["requests"],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    name="elasticsearch-cli",
+    name="relasticsearch-cli",
     packages=setuptools.find_packages(),
     project_urls={
-        "Issues": "https://github.com/rivethealth/elasticsearch-cli/issues",
+        "Issues": "https://github.com/rivethealth/relasticsearch-cli/issues",
     },
-    url="https://github.com/rivethealth/elasticsearch-cli",
+    url="https://github.com/rivethealth/relasticsearch-cli",
     version=version["__version__"],
 )
